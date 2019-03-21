@@ -1,0 +1,41 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - GenericserviceApplication",
+            "request": "launch",
+            "mainClass": "info.morgia.genericservice.GenericserviceApplication",
+            "projectName": "genericservice"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayserviceApplication<gatewayservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.gatewayservice.GatewayserviceApplication",
+            "projectName": "gatewayservice",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DiscoveryserverApplication<discoveryserver>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.discoveryserver.DiscoveryserverApplication",
+            "projectName": "discoveryserver",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CoreserviceApplication<coreservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.coreservice.CoreserviceApplication",
+            "projectName": "coreservice",
+            "args": ""
+        }
+    ]
+}
