@@ -13,6 +13,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String Login(@RequestParam() String username,@RequestParam() String password){
-        return "OK";
+        return "OK_2";
     }
 }
