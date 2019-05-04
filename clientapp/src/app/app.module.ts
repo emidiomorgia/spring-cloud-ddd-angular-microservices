@@ -5,15 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
-import { AppLayoutComponent } from './shared/app-layout/app-layout/app-layout.component';
-import { LoginLayoutComponent } from './shared/login-layout/login-layout.component';
+import { SecureComponent } from './layouts/secure/secure.component';
+import { PublicComponent } from './layouts/public/public.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AppLayoutComponent,
-    LoginLayoutComponent
+    SecureComponent,
+    PublicComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

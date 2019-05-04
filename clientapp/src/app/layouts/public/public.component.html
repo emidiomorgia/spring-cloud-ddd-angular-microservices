@@ -1,0 +1,33 @@
+
+<!-- Navbar-->
+<header class="app-header"><a class="app-header__logo" href="index.html">Experiments</a>
+  <!-- Sidebar toggle button--><span class="app-sidebar__toggle"  data-toggle="sidebar"
+    aria-label="Hide Sidebar"></span>
+  <!-- Navbar Right Menu-->
+  <ul class="app-nav">
+    <!-- User Menu-->
+    <li class="dropdown" ngbDropdown ><span class="app-nav__item" ngbDropdownToggle  data-toggle="dropdown" aria-label="Open Profile Menu"><i
+          class="fa fa-user fa-lg"></i></span>
+      <ul class="dropdown-menu settings-menu dropdown-menu-right" ngbDropdownMenu >
+        <li><a class="dropdown-item" ngbDropdownItem href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Login</a></li>
+      </ul>
+    </li>
+  </ul>
+</header>
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  <div class="app-sidebar__user"><img class="app-sidebar__user-avatar"
+      src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+    <div>
+      <p class="app-sidebar__user-name">Not logged in</p>
+      <p class="app-sidebar__user-designation"></p>
+    </div>
+  </div>
+  <ul class="app-menu">
+
+  </ul>
+</aside>
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>

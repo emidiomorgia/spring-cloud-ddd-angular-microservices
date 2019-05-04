@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppLayoutComponent } from './app-layout.component';
+import { SecureComponent } from './secure.component';
 
-describe('AppLayoutComponent', () => {
-  let component: AppLayoutComponent;
-  let fixture: ComponentFixture<AppLayoutComponent>;
+describe('SecureComponent', () => {
+  let component: SecureComponent;
+  let fixture: ComponentFixture<SecureComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppLayoutComponent ]
+      declarations: [ SecureComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppLayoutComponent);
+    fixture = TestBed.createComponent(SecureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
