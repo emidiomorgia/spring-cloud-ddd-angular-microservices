@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/infrastructure/auth.service';
+import { Router } from '@angular/router';
 
 declare var $: any;
 
@@ -8,10 +10,23 @@ declare var $: any;
   styleUrls: ['./secure.component.css']
 })
 export class SecureComponent implements OnInit {
+  authService: AuthService;
+  router: Router;
 
-  constructor() { }
+  constructor(authService: AuthService, router: Router) {
+    this.authService = authService;
+    this.router = router;
+  }
   ngOnInit(): void {
     this.jqBsInit();
+  }
+
+  public logoutClicked(){
+    debugger;
+    this.authService.setAuthToken(null);
+    this.router.navigate(['login']);
+    console.log('logout');
+
   }
 
   private jqBsInit() {

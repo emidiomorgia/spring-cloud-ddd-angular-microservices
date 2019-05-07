@@ -5,16 +5,18 @@ import { HomeComponent } from './home/home.component';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { GuardService } from './infrastructure/guard.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 const PUBLIC_ROUTES: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent }
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent }
 ];
 
 const SECURE_ROUTES: Routes = [
-  { path: '', redirectTo: 'overview', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'home', component: HomeComponent }
 
 ];
 

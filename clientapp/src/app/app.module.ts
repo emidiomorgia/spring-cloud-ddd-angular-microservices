@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { SecureComponent } from './layouts/secure/secure.component';
 import { PublicComponent } from './layouts/public/public.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -17,7 +18,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     SecureComponent,
     PublicComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
