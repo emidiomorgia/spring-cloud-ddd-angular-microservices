@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,15 @@ export class AuthService {
 
   public getAuthToken(): string {
     return localStorage.getItem('auth_token');
+  }
+
+  public login(username: string, password: string): Observable<boolean> {
+    if (username == 'admin' && password == 'admin'){
+      this.setAuthToken('token');
+      return of(true);
+    } else {
+      return of(false);
+    }
   }
 
   public setAuthToken(token: string) {
