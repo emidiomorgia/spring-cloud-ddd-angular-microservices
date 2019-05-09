@@ -10,11 +10,17 @@
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
         <div class="form-group">
           <label class="control-label">USERNAME</label>
-          <input class="form-control" type="text" placeholder="Email" autofocus [(ngModel)]="username" name="username">
+          <input class="form-control" [ngClass]="{'is-invalid' : showUsernameValidationError}" type="text" placeholder="Email" autofocus [(ngModel)]="username" name="username">
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label">PASSWORD</label>
-          <input class="form-control" type="password" placeholder="Password" [(ngModel)]="password" name="password">
+          <input class="form-control" [ngClass]="{'is-invalid' : showPasswordValidationError}" type="password" placeholder="Password" [(ngModel)]="password" name="password">
+          <div class="invalid-feedback">
+            Please enter password.
+          </div>
         </div>
         <div class="form-group">
           <div class="utility">
