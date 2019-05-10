@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import {  timer } from 'rxjs';
+import { delay } from 'rxjs/internal/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,13 +19,15 @@ export class AuthService {
   }
 
   public login(username: string, password: string): Observable<boolean> {
+    let res: boolean = false;
 
     if (username == 'admin' && password == 'admin'){
       this.setAuthToken('token');
-      return of(true);
-    } else {
-      return of(false);
+      res=true;
+
     }
+
+    return of(res).pipe(delay(5000));
 
   }
 

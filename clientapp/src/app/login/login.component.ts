@@ -19,25 +19,42 @@ export class LoginComponent implements OnInit {
   public password: string;
   public showUsernameValidationError : boolean;
   public showPasswordValidationError : boolean;
+  public showUserNotFoundValidationError : boolean;
 
   constructor(authService: AuthService, router: Router) {
+    this.username=null;
+    this.password=null;
+    this.showPasswordValidationError=false;
+    this.showUserNotFoundValidationError=false;
+    this.showUsernameValidationError=false;
+
     this.authService = authService;
     this.router = router;
   }
 
-  public loginClicked() {
-    let isValid: boolean;
-    this.showUsernameValidationError=!this.username;
-    this.showPasswordValidationError=!this.password;
-    isValid = this.showUsernameValidationError && this.showPasswordValidationError;
-    if (isValid) {
-      this.authService.login(this.username, this.password).subscribe(result => {
-        if (result) {
-          this.router.navigate(['/home']);
-        } else {
+  private isStringNullOrEmpty(value : string) : boolean{
+    return value == undefined || value == null || value.length == 0 ;
+  }
 
+  public loginClicked() {
+    let notEmpty: boolean;
+    this.showUsernameValidationError=this.isStringNullOrEmpty(this.username);
+    this.showPasswordValidationError=this.isStringNullOrEmpty(this.password);
+    notEmpty = !this.showUsernameValidationError && !this.showPasswordValidationError;
+
+    if (notEmpty) {
+      this.authService.login(this.username, this.password).subscribe(found => {
+        this.showUserNotFoundValidationError=!found;
+        if (found) {
+          this.router.navigate(['/home']);
         }
-      });
+      },
+
+      error => {},
+
+      () => {}
+
+      );
     }
   }
 
