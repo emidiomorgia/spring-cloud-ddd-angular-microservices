@@ -8,8 +8,8 @@
     <div class="login-box">
       <form class="login-form" >
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
-        <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="showUserNotFoundValidationError" >
-          <strong>Warning!</strong>Username and/or password not correct. Please check
+        <ngb-alert [type]="'danger'" [dismissible]="false" *ngIf="validationError!=null" >
+          <strong>Warning!&nbsp;</strong>{{validationError}}
         </ngb-alert>
         <div class="form-group">
           <label class="control-label">USERNAME</label>

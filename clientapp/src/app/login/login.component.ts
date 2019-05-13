@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../infrastructure/auth.service';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 
 declare var $: any;
@@ -19,13 +18,13 @@ export class LoginComponent implements OnInit {
   public password: string;
   public showUsernameValidationError : boolean;
   public showPasswordValidationError : boolean;
-  public showUserNotFoundValidationError : boolean;
+  public validationError : string;
 
   constructor(authService: AuthService, router: Router) {
     this.username=null;
     this.password=null;
     this.showPasswordValidationError=false;
-    this.showUserNotFoundValidationError=false;
+    this.validationError=null;
     this.showUsernameValidationError=false;
 
     this.authService = authService;
@@ -44,13 +43,16 @@ export class LoginComponent implements OnInit {
 
     if (notEmpty) {
       this.authService.login(this.username, this.password).subscribe(found => {
-        this.showUserNotFoundValidationError=!found;
         if (found) {
           this.router.navigate(['/home']);
+        } else {
+          this.validationError="User not found. Please check username and/or password.";
         }
       },
 
-      error => {},
+      error => {
+        this.validationError=error;
+      },
 
       () => {}
 
