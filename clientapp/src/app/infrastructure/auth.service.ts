@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/internal/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { delay, catchError, map, tap } from 'rxjs/internal/operators';
+import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { LoginResponse } from './loginResponse.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  http: HttpClient;
 
-  constructor() { }
+  constructor(http : HttpClient) {
+    this.http = http;
+  }
 
   public isAuthenticated(): boolean {
     const token: string = this.getAuthToken();
@@ -20,15 +25,36 @@ export class AuthService {
 
   public login(username: string, password: string): Observable<boolean> {
     let res: boolean = false;
+    let p = new HttpParams()
+              .set('username',username)
+              .set('password',password);
+    debugger;
+    return this.http.get<LoginResponse>('/api/genericservice/login/login',{ params : p})
+    .pipe(
+      tap(data => {
+        debugger;
+        this.setAuthToken(data.token)
+      }),
+      map(result => true),
+      catchError(this.handleError)
+    )
+  }
 
-    if (username == 'admin' && password == 'admin'){
-      this.setAuthToken('token');
-      res=true;
+  private handleError(err: HttpErrorResponse) {
+    debugger;
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+        errorMessage = err.message;
+    } else {
+      if(err.status >= 400 && err.status < 500){
+        errorMessage = err.error.message;
+      } else {
+        errorMessage = `Server or communication error: ${err.message}`;
+      }
 
     }
 
-    return of(res).pipe(delay(5000));
-
+    return throwError(errorMessage);
   }
 
   public setAuthToken(token: string) {

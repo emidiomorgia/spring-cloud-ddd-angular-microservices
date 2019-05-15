@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../infrastructure/auth.service';
 import { Router } from '@angular/router';
+import { HttpParams, HttpClient } from '@angular/common/http';
 
 
 declare var $: any;
@@ -19,8 +20,9 @@ export class LoginComponent implements OnInit {
   public showUsernameValidationError : boolean;
   public showPasswordValidationError : boolean;
   public validationError : string;
+  http: HttpClient;
 
-  constructor(authService: AuthService, router: Router) {
+  constructor(authService: AuthService, router: Router, http : HttpClient) {
     this.username=null;
     this.password=null;
     this.showPasswordValidationError=false;
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
 
     this.authService = authService;
     this.router = router;
+    this.http = http;
   }
 
   private isStringNullOrEmpty(value : string) : boolean{
@@ -42,20 +45,18 @@ export class LoginComponent implements OnInit {
     notEmpty = !this.showUsernameValidationError && !this.showPasswordValidationError;
 
     if (notEmpty) {
+      let p = new HttpParams()
+      .set('username','admin')
+      .set('password','admin');
+
       this.authService.login(this.username, this.password).subscribe(found => {
         if (found) {
           this.router.navigate(['/home']);
-        } else {
-          this.validationError="User not found. Please check username and/or password.";
         }
       },
-
       error => {
         this.validationError=error;
-      },
-
-      () => {}
-
+      }
       );
     }
   }

@@ -11,6 +11,7 @@ import { SecureComponent } from './layouts/secure/secure.component';
 import { PublicComponent } from './layouts/public/public.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -28,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FormsModule,
     CommonModule,
+    HttpClientModule,
     NgbModule
   ],
   providers: [],
