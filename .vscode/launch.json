@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - IdentityserviceApplication",
+            "request": "launch",
+            "mainClass": "info.morgia.akron.identityservice.IdentityserviceApplication"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - GenericserviceApplication",
             "request": "launch",
             "mainClass": "info.morgia.genericservice.GenericserviceApplication",
@@ -35,6 +41,16 @@
             "console": "internalConsole",
             "mainClass": "info.morgia.coreservice.CoreserviceApplication",
             "projectName": "coreservice",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-IdentityserviceApplication<identityservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.akron.identityservice.IdentityserviceApplication",
+            "projectName": "identityservice",
             "args": ""
         }
     ]
