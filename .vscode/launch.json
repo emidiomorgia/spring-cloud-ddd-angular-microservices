@@ -52,6 +52,16 @@
             "mainClass": "info.morgia.akron.identityservice.IdentityserviceApplication",
             "projectName": "identityservice",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DiscoveryserviceApplication<discoveryservice>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.akron.discoveryservice.DiscoveryserviceApplication",
+            "projectName": "discoveryservice",
+            "args": ""
         }
     ]
 }
