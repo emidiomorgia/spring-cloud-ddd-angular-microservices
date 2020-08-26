@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  counter-service:
+    restart: on-failure
+    build:
+      context: ./counters-service
+    environment: 
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_ROOT_PWD: ${DB_ROOT_PWD:-mysqlpwd}
+    ports:
+      - 8001:8080
+    depends_on: 
+      - database
+  database:
+    container_name: database
+    restart: always
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD:-mysqlpwd}
+    
+    

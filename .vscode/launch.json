@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CountersServiceApplication<counters-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.countersservice.CountersServiceApplication",
+            "projectName": "counters-service",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CountersServiceApplication<counters-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.counters.countersservice.CountersServiceApplication",
+            "projectName": "counters-service",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayServiceApplication<gateway-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.counters.gatewayservice.GatewayServiceApplication",
+            "projectName": "gateway-service",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DiscoveryServiceApplication<discovery-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.counters.discoveryservice.DiscoveryServiceApplication",
+            "projectName": "discovery-service",
+            "args": ""
+        }
+    ]
+}

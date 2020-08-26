@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD:-mysqlpwd}
+    ports:
+      - 3306:3306
