@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   discoveryservice:
-    restart: on-failure
+    restart: always
     build:
       context: ./discovery-service
     ports:
@@ -9,7 +9,7 @@ services:
     depends_on: 
       - database
   gatewayservice:
-    restart: on-failure
+    restart: always
     build:
       context: ./gateway-service
     ports:
@@ -18,14 +18,13 @@ services:
       - discoveryservice
       - database
   counterservice:
-    restart: on-failure
+    restart: always
     build:
       context: ./counters-service
     environment: 
       DB_HOST: database
       DB_PORT: 3306
       DB_ROOT_PWD: ${DB_ROOT_PWD:-mysqlpwd}
-      
     ports:
       - "8001"
     depends_on: 
