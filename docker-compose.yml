@@ -1,11 +1,25 @@
 version: "3.8"
 services:
-  discoveryservice:
+  discoveryservice1:
     restart: always
     build:
       context: ./discovery-service
+    environment: 
+      DISCOVERY_SERVICE_HOSTNAME: discoveryservice1
+      DISCOVERY_SERVICE_DEFAULT_ZONE: http://discoveryservice2:8761/eureka
     ports:
-      - "8761"
+      - 8761:8761
+    depends_on: 
+      - database
+  discoveryservice2:
+    restart: always
+    build:
+      context: ./discovery-service
+    environment: 
+      DISCOVERY_SERVICE_HOSTNAME: discoveryservice2
+      DISCOVERY_SERVICE_DEFAULT_ZONE: http://discoveryservice1:8761/eureka
+    ports:
+      - 8762:8761
     depends_on: 
       - database
   gatewayservice:
@@ -15,7 +29,8 @@ services:
     ports:
       - 8080:8080
     depends_on: 
-      - discoveryservice
+      - discoveryservice1
+      - discoveryservice2
       - database
   counterservice:
     restart: always
@@ -28,7 +43,8 @@ services:
     ports:
       - "8001"
     depends_on: 
-      - discoveryservice
+      - discoveryservice1
+      - discoveryservice2
       - gatewayservice
       - database
   database:
@@ -37,5 +53,9 @@ services:
     image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD:-mysqlpwd}
+    volumes:
+      - database-volume:/var/lib/mysql
+volumes:
+  database-volume:
     
     
