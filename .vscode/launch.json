@@ -39,6 +39,16 @@
             "mainClass": "info.morgia.counters.discoveryservice.DiscoveryServiceApplication",
             "projectName": "discovery-service",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-UiServiceApplication<ui-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "info.morgia.counters.uiservice.UiServiceApplication",
+            "projectName": "ui-service",
+            "args": ""
         }
     ]
 }

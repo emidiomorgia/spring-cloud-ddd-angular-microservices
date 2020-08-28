@@ -47,6 +47,17 @@ services:
       - discoveryservice2
       - gatewayservice
       - database
+  uiservice:
+    restart: always
+    build:
+      context: ./ui-service
+    ports:
+      - "8002"
+    depends_on: 
+      - discoveryservice1
+      - discoveryservice2
+      - gatewayservice
+      - database
   database:
     container_name: database
     restart: always

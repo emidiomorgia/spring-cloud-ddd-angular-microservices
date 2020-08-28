@@ -1,0 +1,43 @@
+spring:
+    application:
+        name: gatewayservice
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+                    lowerCaseServiceId: true
+            routes:
+                - id: default
+                  uri: http://localhost:8002
+                  predicates:
+                    - Path=/**
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+    
+---
+spring:
+    profiles: prod
+    application:
+        name: gatewayservice
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+                    lowerCaseServiceId: true
+            routes:
+                - id: default
+                  uri: http://uiservice:8002
+                  predicates:
+                    - Path=/**
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://discoveryservice1:8761/eureka/,http://discoveryservice2:8761/eureka/
+
+
+
+
